@@ -24,7 +24,12 @@ Redmine::Plugin.register :redmine_work_time do
     permission :edit_work_time_total, {}
     permission :edit_work_time_other_member, {}
   end
+	#menu :top_menu, :DareAuto_WorkTime_main_menu, { :controller => 'dareauto_wktime_main', :action => 'index' }, :caption => :work_time, :if => Proc.new { Object.new.extend(WktimeHelper).checkViewPermission } 
+  #menu :top_menu, :time_tracker_main_menu, {:controller => 'tt_menu_switcher', :action => 'index'}, :caption => :time_tracker_label_main_menu,
+  #     # if the user has one or more of the permissions declared within this Plug-In, he should see the "TimeTracker"-Menu
+  #     :if => permission_checker([:tt_log_time, :tt_edit_own_time_logs, :tt_edit_time_logs, :tt_view_bookings, :tt_book_time, :tt_edit_own_bookings, :tt_edit_bookings])
 
+  
   menu :account_menu, :work_time,
     {:controller => 'work_time', :action => 'index'},
     :before => :my_account,
